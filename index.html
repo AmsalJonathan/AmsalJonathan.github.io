@@ -138,18 +138,18 @@
         </div>
         <div class="row justify-content-center">
           <div class="col-md-6">
-            <form>
+            <form name="amsal-contact-form">
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" />
               </div>
               <div class="mb-3">
                 <label for="name" class="form-label">Nama Lengkap</label>
-                <input type="text" class="form-control" id="name" aria-describedby="name" />
+                <input type="text" class="form-control" id="name" aria-describedby="name" name="nama" />
               </div>
               <div class="mb-3">
                 <label for="Pesan" class="form-label">Pesan</label>
-                <textarea class="form-control" id="Pesan" rows="3"></textarea>
+                <textarea class="form-control" id="Pesan" rows="3" name="pesan"></textarea>
               </div>
               <button type="submit" class="btn btn-success">Kirim</button>
             </form>
@@ -173,5 +173,17 @@
     <!-- akhir footer -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+    <script>
+      const scriptURL = '<https://script.google.com/macros/s/AKfycbxGnmChTQG2C2z-8N08__drTiXp67BNrJm1nTBdkU4mA2Odx7Sq_XhIwLcn_NjZCaqm/exec>';
+      const form = document.forms['amsal-contact-form'];
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+          .then((response) => console.log('Success!', response))
+          .catch((error) => console.error('Error!', error.message));
+      });
+    </script>
   </body>
 </html>
