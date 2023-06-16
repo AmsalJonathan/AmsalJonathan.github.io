@@ -12,5 +12,5 @@ section {
   width: 100%;
 }
 #Gallery .row > * {
-  padding: 0;
+  padding: 10;
 }
